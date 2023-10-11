@@ -9,4 +9,28 @@
     <%= user.email %>
   </p>
 
+  <p>
+    <%= image_tag user.avatar %>
+  </p>
+
+    <p>
+      <%= image_tag user.avatar.variant(:thumb_larger) %>
+    </p>
+
+  <% if user.microposts.size.positive? %>
+    <p>--- List post ---</p>
+    <% user.microposts.each_with_index do |post, i| %>
+      <p>
+        <strong><%= i+1 %>. Content:</strong>
+        <%= post.content %>
+      </p>
+      <p>
+        <strong>Type:</strong>
+        <%= post.type_post %>
+      </p>
+    <% end %>
+    <p>-------</p>
+  <% end %>
+
 </div>
+
